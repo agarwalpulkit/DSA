@@ -1,65 +1,69 @@
-﻿//Given a m * n matrix of ones and zeros, return how many square sub matrices have all ones.
+﻿//On an 8x8 chessboard, there can be multiple Black Queens and one White King.
+//Given an array of integer coordinates queens that represents the positions of the Black Queens,
+//and a pair of coordinates king that represent the position of the White King,
+//return the coordinates of all the queens (in any order) that can attack the King.
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Arrays
 {
-    class SquareSubMatrices
+    class QueensAttackingKing
     {
-        public static int CountSquares(int[][] matrix)
+        public static IList<IList<int>> QueensAttacktheKing(int[][] queens, int[] king)
         {
-            int n = matrix.Length;
-            if (n == 0)
+            // all the 8 relative directions from where a queen can attack a king.
+            int[][] directions =
             {
-                return 0;
-            }
-            int m = matrix[0].Length;
-
-            int res = 0;
-            int[,] dp = new int[n, m];
-
-            for (int i = 0; i < n; i++)
+                new int[] {-1, -1},
+                new int[] {0, -1},
+                new int[] {1, -1},
+                new int[] {1, 0},
+                new int[] {1, 1},
+                new int[] {0, 1},
+                new int[] {-1, 1},
+                new int[] {-1, 0}
+            };
+            IList<IList<int>> result = new List<IList<int>>();
+            foreach (var direction in directions)
             {
-                for (int j = 0; j < m; j++)
+                int x = king[0];
+                int y = king[1];
+                while (true)
                 {
-                    dp[i, j] = matrix[i][j];
-                }
-            }
+                    x += direction[0];
+                    y += direction[1];
 
-            for (int i = 1; i < n; i++)
-            {
-                for (int j = 1; j < m; j++)
-                {
-                    if (matrix[i][j] == 0)
-                    {
-                        dp[i, j] = 0;
+                    if (x < 0 || x > 7 || y < 0 || y > 7)
+                        break;
+                    if (!queens.Any(q => q[0] == x && q[1] == y))
                         continue;
-                    }
-
-                    dp[i, j] = Math.Min(dp[i - 1, j - 1], Math.Min(dp[i, j - 1], dp[i - 1, j])) + 1;
+                    result.Add(new[] { x, y });
+                    break;
                 }
             }
 
-
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < m; j++)
-                {
-                    res += dp[i, j];
-                }
-            }
-
-            return res;
+            return result;
         }
         static void Main(string[] args)
         {
-            int[][] array = new[]
+            int[][] queens = new[]
             {
-                new []{0,1,1,1},
-                new []{1,1,1,1},
-                new []{0,1,1,1}
+                new []{0,1},
+                new []{1,0},
+                new []{4,0},
+                new []{0,4},
+                new []{3,3},
+                new []{2,4}
             };
-            Console.WriteLine(CountSquares(array));
+            int[] king = new[] { 0, 0 };
+            var result = QueensAttacktheKing(queens, king);
+            foreach (var res in result)
+            {
+                foreach (var r in res)
+                    Console.WriteLine(r);
+            }
             Console.ReadKey();
         }
     }
