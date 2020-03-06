@@ -7,7 +7,7 @@
 
 using System;
 
-namespace Array
+namespace Arrays
 {
     class MinTimeVisitingPoints
     {

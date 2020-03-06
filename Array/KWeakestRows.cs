@@ -7,7 +7,7 @@
 using System;
 using System.Linq;
 
-namespace Array
+namespace Arrays
 {
     class KWeakestRows
     {

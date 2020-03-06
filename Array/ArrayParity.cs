@@ -4,7 +4,7 @@ using System;
 
 namespace Arrays
 {
-    class EvenNumberDigits
+    class ArrayParity
     {
         public static int FindNumbers(int[] nums)
         {
