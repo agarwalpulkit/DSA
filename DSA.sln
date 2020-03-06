@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tree", "Tree\Tree.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "String", "String\String.csproj", "{2542EC85-72B2-4A0F-B19A-6DD109046BC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{BC754A8F-1341-4E48-AF17-AFCBD10ED204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinkedList", "LinkedList\LinkedList.csproj", "{BC754A8F-1341-4E48-AF17-AFCBD10ED204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Array", "Array\Array.csproj", "{75D4D968-2DBF-4A64-ACEF-6E2BFAC89467}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Arrays", "Array\Arrays.csproj", "{75D4D968-2DBF-4A64-ACEF-6E2BFAC89467}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

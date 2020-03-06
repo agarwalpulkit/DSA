@@ -1,58 +1,39 @@
-﻿//Given an integer n, return any array containing n unique integers such that they add up to 0.
+﻿//Given an array A of non-negative integers, half of the integers in A are odd, and half of the integers are even.
+//Sort the array so that whenever A[i] is odd, i is odd; and whenever A[i] is even, i is even.
+//You may return any answer array that satisfies this condition.
 
 using System;
-using System.Linq;
 
-namespace Array
+namespace Arrays
 {
     class NUniqueIntegers
     {
-        public static int[] SumZero(int n)
+        public static int[] SortArrayByParityII(int[] A)
         {
-            int[] arr = new int[n];
-            // if array size is one then just add 0 to it.
-            if (n == 1)
+            int evenIndex = 0, oddIndex = 1;
+            int[] res = new int[A.Length];
+            foreach (var t in A)
             {
-                arr[0] = 0;
-                return arr;
-            }
-            else
-            {
-                Random random = new Random();
-                // if array size is even then add random number from start and negative of that from end.
-                if (n % 2 == 0)
+                // if the number is even store it in even index. 
+                if (t % 2 == 0)
                 {
-                    for (int i = 1; i <= n / 2; i++)
-                    {
-                        int a = random.Next();
-                        while (arr.Contains(a))
-                            a = random.Next();
-                        arr[i - 1] = a;
-                        arr[n - i] = -(arr[i - 1]);
-                    }
-                    return arr;
+                    res[evenIndex] = t;
+                    evenIndex += 2;
                 }
-                // if array size is odd then add 0 in middle and random number from start and negative of that from end.
-                if (n % 2 != 0)
+                // if the number is odd store it in odd index. 
+                else
                 {
-                    arr[n / 2] = 0;
-                    for (int i = 1; i <= n / 2; i++)
-                    {
-                        int a = random.Next();
-                        while (arr.Contains(a))
-                            a = random.Next();
-                        arr[i - 1] = a;
-                        arr[n - i] = -(arr[i - 1]);
-                    }
-                    return arr;
+                    res[oddIndex] = t;
+                    oddIndex += 2;
                 }
             }
 
-            return null;
+            return res;
         }
         static void Main(string[] args)
         {
-            int[] result = SumZero(10);
+            int[] array = new[] {4, 2, 5, 7};
+            int[] result = SortArrayByParityII(array);
             foreach (var res in result)
             {
                 Console.WriteLine(res);
