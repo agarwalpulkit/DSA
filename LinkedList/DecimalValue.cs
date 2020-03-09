@@ -8,9 +8,9 @@ namespace LinkedList
 {
     class DecimalValue
     {
-        public static int GetDecimalValue(ListNode head)
+        public static int GetDecimalValue(LinkList.ListNode head)
         {
-            ListNode temp = head;
+            LinkList.ListNode temp = head;
             int number = 0;
             int count = 0;
             if (head.next == null)
@@ -34,7 +34,11 @@ namespace LinkedList
 
         static void Main(string[] args)
         {
-            Console.WriteLine(GetDecimalValue());
+            int[] head = new[] {1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0};
+            LinkList ll = new LinkList();
+            foreach (var h in head)
+                ll.PushAfter(h);
+            Console.WriteLine(GetDecimalValue(ll.head));
             Console.ReadKey();
         }
     }
